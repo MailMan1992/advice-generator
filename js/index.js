@@ -1,13 +1,12 @@
 const url = "https://api.adviceslip.com/advice";
 let diceButton = document.querySelector(".dice-button");
 
-diceButton.addEventListener("click", (e) => {
+diceButton.addEventListener("click",async (e) => {
 	e.target.classList.add("active");
-	setAdvice();
-	e.target.addEventListener("animationend", () => {
-		e.target.classList.remove("active");
+	if(e.target.classList.contains("active")) {
+		await setAdvice(e)
+	}
 
-	})
 })
 async function getAdvice() {
 	try {
@@ -21,14 +20,19 @@ async function getAdvice() {
 }
 
 
-async function setAdvice() {
+async function setAdvice(e) {
 	try {
 		let item = await getAdvice();
+		console.log(item)
 		let {id, advice} = item.slip
 		let pAdvice = document.getElementById("advice");
 		let adviceNumber = document.getElementById("advice-number")
 		pAdvice.innerText = advice;
 		adviceNumber.innerText = `#${id}`;
+		setTimeout(() => {
+			e.target.classList.remove("active");
+		}, 2000)
+
 	} catch (e) {
 		console.log(e);
 	}

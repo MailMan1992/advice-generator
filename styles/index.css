@@ -75,6 +75,7 @@ h2 {
 }
 .dice-button.active {
     pointer-events: none;
+
 }
 .dice-button.active img {
     animation: roll .5s linear;
