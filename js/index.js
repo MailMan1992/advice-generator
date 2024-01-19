@@ -10,21 +10,29 @@ diceButton.addEventListener("click", (e) => {
 	})
 })
 async function getAdvice() {
-	let data = await fetch(url);
-	return data.json();
+	try {
+		let data = await fetch(url);
+		return await data.json();
+
+	} catch (e) {
+		console.log(e);
+		return e.message;
+	}
 }
 
 
-function setAdvice() {
-		let data = getAdvice();
-		data.then(item => {
-			let {id, advice} = item.slip
-			let pAdvice = document.getElementById("advice");
-			let adviceNumber = document.getElementById("advice-number")
-			pAdvice.innerText = advice;
-			adviceNumber.innerText = `#${id}`;
-		}).catch(error => {
-			console.log(error)
-		})
+async function setAdvice() {
+	try {
+		let item = await getAdvice();
+		let {id, advice} = item.slip
+		let pAdvice = document.getElementById("advice");
+		let adviceNumber = document.getElementById("advice-number")
+		pAdvice.innerText = advice;
+		adviceNumber.innerText = `#${id}`;
+	} catch (e) {
+		console.log(e);
+	}
+
+
 }
 
