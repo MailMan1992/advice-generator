@@ -1,0 +1,129 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 62.5%;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    font-size: 1.6rem;
+    background-color: #202632;
+    font-family: sans-serif;
+    letter-spacing: .1rem;
+}
+h2 {
+    color: #53feaa;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: #313a49;
+    height: 30rem;
+    width: 60rem;
+    position: relative;
+    border-radius: 1rem;
+}
+.advice-container {
+    height: 10rem;
+    width: 70%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: white;
+}
+.container picture {
+    width: 100%;
+}
+
+.container picture > * {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+.dice-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    background-color: #53feaa;
+    position: absolute;
+    bottom: -27px;
+}
+
+.dice-button img {
+    pointer-events: none;
+    transition: all .1s linear;
+}
+
+.dice-button:hover {
+    box-shadow: 0 0 3px 5px hsla(151, 99%, 66%, .5);
+    cursor: pointer;
+}
+.dice-button.active {
+    pointer-events: none;
+}
+.dice-button.active img {
+    animation: roll .5s linear;
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        width: 90%;
+        height: 30rem;
+    }
+
+    .container picture img {
+        width: 90%;
+    }
+}
+
+@keyframes roll {
+    0% {
+        transform: rotateZ(0);
+    }
+    10% {
+        transform: rotateZ(20deg);
+    }
+    20% {
+        transform: rotateZ(0);
+    }
+    30% {
+        transform: rotateZ(-20deg);
+    }
+    40% {
+        transform: rotateZ(0);
+    }
+    50% {
+        transform: rotateZ(20deg);
+    }
+    60% {
+        transform: rotateZ(0);
+    }
+    70% {
+        transform: rotateZ(-20deg);
+    }
+    80% {
+        transform: rotateZ(0);
+    }
+    90% {
+        transform: rotateZ(20deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
